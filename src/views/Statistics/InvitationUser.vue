@@ -5,37 +5,37 @@
         <Icon name="friends" color="#fff" size="16" />
       </div> -->
       <div class="headerLabel">用户总数：</div>
-      <div class="headerValue">{{total}}</div>
+      <div class="headerValue">{{totalUser}}</div>
       <!-- <div class="headerUnit">人</div> -->
     </div>
-    <div class="card list">
-      <List
-        v-if="list.length > 0"
-        v-model="loading"
-        :finished="finished"
-        finished-text="没有更多了"
-        @load="onLoad"
-      >
-        <Cell v-for="item in list" :key="item" :title="`${item} 邀请记录标题`" value="内容" label="描述信息" center />
-      </List>
-      <Empty v-else height="100px" />
+    <div class="card list" v-if="list.length > 0">
+      <Cell v-for="item in list" :key="item" :title="`${item} 邀请记录标题`" value="内容" label="描述信息" center />
     </div>
+    <Empty v-else height="100px" />
+    <ScrollBottomLoadMore
+      class="loadMore"
+      :totalpage="totalPage"
+      :loading="listLoading"
+      @update="handleScrollBottomLoadMore"
+    />
   </div>
 </template>
 
 <script>
 import { List, Cell, Icon } from 'vant'
 import Empty from '@/components/Empty'
+import ScrollBottomLoadMore from '@/components/ScrollBottomLoadMore'
+import { apiList } from '@/api/statistics'
 
 export default {
-  components: { List, Cell, Icon, Empty },
+  components: { List, Cell, Icon, Empty, ScrollBottomLoadMore },
   data() {
     return {
+      totalUser: 0,
       list: [],
-      loading: false,
-      finished: false,
-      total: 0,
-      inited: false,
+      page: 0,
+      totalPage: 0,
+      listLoading: false,
     };
   },
   computed: {
@@ -43,40 +43,54 @@ export default {
       return this.$store.state.account
     }
   },
-  mounted() {
-    this.$toast.loading({ duration: 0, forbidClick: true })
-  },
   watch: {
     account(newVal, oldVal) {
       if (newVal) {
-        this.onLoad()
+        this.loadList()
       }
     }
   },
+  mounted() {
+    this.$toast.loading({ duration: 0, forbidClick: true })
+    if (this.account) {
+      this.loadList()
+    }
+  },
   methods: {
-    onLoad() {
-      if (!this.account) {
+    loadList() {
+      apiList({ page: 1 }).then(res => {
+        setTimeout(() => {
+          if (res.code === 200) {
+            this.list = res.data.list.map(d => `${this.account} 1 ${d.id}`)
+            this.totalPage = res.data.totalElements
+            this.page = 1
+            this.totalUser = 12
+            this.$toast.clear()
+          }
+        }, 1000)
+      })
+    },
+    handleScrollBottomLoadMore() {
+      if (this.listLoading || this.page >= this.totalPage) {
         return
-      }
-      // 异步更新数据
-      // setTimeout 仅做示例，真实场景中一般为 ajax 请求
-      setTimeout(() => {
-        for (let i = 0; i < 10; i++) {
-          this.list.push(`${this.account} ${this.list.length + 1}`)
-        }
-        this.total = 12
-        // 加载状态结束
-        this.loading = false
-        if (!this.inited) {
-          this.$toast.clear()
-          this.inited = true
-        }
-
-        // 数据全部加载完成
-        if (this.list.length >= 40) {
-          this.finished = true
-        }
-      }, 1000)
+      } 
+      this.listLoading = true
+      let page = this.page + 1
+      apiList({ page }).then(res => {
+        setTimeout(() => {
+          this.listLoading = false
+          if (res.code === 200) {
+            this.list = [...this.list, ...res.data.list.map(d => `${this.account} ${page} ${d.id}`)]
+            this.page = this.page + 1
+          } else {
+            throw new Error()
+          }
+        }, 1000)
+        
+      }).catch(e => {
+        this.listLoading = false
+        this.$toast.fail('数据加载失败')
+      })
     },
   },
 }

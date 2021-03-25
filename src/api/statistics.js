@@ -1,8 +1,8 @@
 import http from './http'
 
-export function apiList() {
+export function apiList({ page }) {
   let params = {
-    current: 1,
+    current: page || 1,
     entity: {
     },
     size: 10,

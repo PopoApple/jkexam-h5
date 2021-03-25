@@ -19,7 +19,25 @@ const axiosInstance = axios.create({
 //   }
 // })
 
-// axiosClient.onResponse(response => {
+axiosInstance.interceptors.response.use((res) => {
+  // Vue.$indicator.close()
+  
+  // const date = res.headers.date
+  
+  // serversDate = Number(new Date(date)) + 1000
+  
+  // Vue.prototype.$_t = serversDate
+  
+  return res.data
+  
+  }, (err) => {
+  // Vue.$indicator.close()
+  
+  return Promise.reject(err)
+  
+  })
+
+// axiosInstance.onResponse(response => {
 //   // if (!isSuccess(response.data)) {
 //   //   return Promise.reject({ statusCode: response.data.code, message: response.data.msg })
 //   // }

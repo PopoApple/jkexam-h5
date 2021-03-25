@@ -15,23 +15,23 @@
 import { Tab, Tabs } from 'vant'
 import RakeBack from './RakeBack'
 import InvitationUser from './InvitationUser'
-import { apiList, apiGet } from '@/api/statistics'
+//import { apiList, apiGet } from '@/api/statistics'
 
 export default {
   components: { Tab, Tabs, RakeBack, InvitationUser },
   data() {
     return {
-      active: 0,
+      active: 1,
     };
   },
-  mounted() {
-    apiGet().then(res => {
-      console.log('apiGet:', res)
-    })
-    apiList().then(res => {
-      console.log('apiList:', res)
-    })
-  },
+  // mounted() {
+  //   apiGet().then(res => {
+  //     console.log('apiGet:', res)
+  //   })
+  //   apiList().then(res => {
+  //     console.log('apiList:', res)
+  //   })
+  // },
   methods: {
     onLoad() {
       // 异步更新数据

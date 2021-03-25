@@ -21,13 +21,28 @@ export default {
       finished: false,
     };
   },
+  computed: {
+    account() {
+      return this.$store.state.account
+    }
+  },
+  watch: {
+    account(newVal, oldVal) {
+      if (newVal) {
+        this.onLoad()
+      }
+    }
+  },
   methods: {
     onLoad() {
+      if (!this.account) {
+        return
+      }
       // 异步更新数据
       // setTimeout 仅做示例，真实场景中一般为 ajax 请求
       setTimeout(() => {
         for (let i = 0; i < 10; i++) {
-          this.list.push(this.list.length + 1);
+          this.list.push(`${this.account} ${this.list.length + 1}`);
         }
 
         // 加载状态结束

@@ -9,6 +9,16 @@
   </div>
 </template>
 
+<script>
+
+export default {
+  created() {
+    window.JKEXAM_H5 = this
+    //JKEXAM_H5.$store.state.account='g'
+  },
+}
+</script>
+
 <style lang="less">
 @import url(./assets/styles/global.less);
 #app {

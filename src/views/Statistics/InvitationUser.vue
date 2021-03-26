@@ -8,27 +8,24 @@
       <div class="headerValue">{{totalUser}}</div>
       <!-- <div class="headerUnit">人</div> -->
     </div>
-    <div class="card list" v-if="list.length > 0">
-      <Cell v-for="item in list" :key="item" :title="`${item} 邀请记录标题`" value="内容" label="描述信息" center />
+    <div class="card list">
+      <template v-if="list.length > 0">
+        <Cell v-for="item in list" :key="item" :title="`${item} 邀请记录标题`" value="内容" label="描述信息" center />
+      </template>
+      <Empty v-else height="calc(100vh - 176px)" />
     </div>
-    <Empty v-else height="100px" />
-    <ScrollBottomLoadMore
-      class="loadMore"
-      :totalpage="totalPage"
-      :loading="listLoading"
-      @update="handleScrollBottomLoadMore"
-    />
+    <ScrollBottomLoadMore :totalpage="totalPage" :loading="listLoading" @update="handleScrollBottomLoadMore" />
   </div>
 </template>
 
 <script>
-import { List, Cell, Icon } from 'vant'
+import { Cell, Icon } from 'vant'
 import Empty from '@/components/Empty'
 import ScrollBottomLoadMore from '@/components/ScrollBottomLoadMore'
 import { apiList } from '@/api/statistics'
 
 export default {
-  components: { List, Cell, Icon, Empty, ScrollBottomLoadMore },
+  components: { Cell, Icon, Empty, ScrollBottomLoadMore },
   data() {
     return {
       totalUser: 0,
@@ -36,7 +33,7 @@ export default {
       page: 0,
       totalPage: 0,
       listLoading: false,
-    };
+    }
   },
   computed: {
     account() {
@@ -60,14 +57,19 @@ export default {
     loadList() {
       apiList({ page: 1 }).then(res => {
         setTimeout(() => {
+          this.$toast.clear()
           if (res.code === 200) {
             this.list = res.data.list.map(d => `${this.account} 1 ${d.id}`)
-            this.totalPage = res.data.totalElements
+            this.totalPage = res.data.totalPages
             this.page = 1
             this.totalUser = 12
-            this.$toast.clear()
+          } else {
+            throw new Error()
           }
         }, 1000)
+      }).catch(e => {
+        this.$toast.clear()
+        this.$toast.fail('数据加载失败')
       })
     },
     handleScrollBottomLoadMore() {
@@ -81,7 +83,7 @@ export default {
           this.listLoading = false
           if (res.code === 200) {
             this.list = [...this.list, ...res.data.list.map(d => `${this.account} ${page} ${d.id}`)]
-            this.page = this.page + 1
+            this.page = page
           } else {
             throw new Error()
           }

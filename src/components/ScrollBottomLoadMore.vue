@@ -31,10 +31,10 @@ import { Loading } from 'vant'
       }
     },
     mounted() {
-      let footer = document.querySelector('footer')
-      if (footer) {
-        this.totalOffset = this.offset + footer.clientHeight
-      } 
+      // let footer = document.querySelector('footer')
+      // if (footer) {
+      //   this.totalOffset = this.offset + footer.clientHeight
+      // } 
       window.addEventListener('scroll', this.disposeScroll) 
     },
     beforeDestroy() {
@@ -43,7 +43,7 @@ import { Loading } from 'vant'
     methods: {
       disposeScroll() {
         let top = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0 // 获取滚动条垂直的位置
-        if (top + document.body.clientHeight + this.totalOffset + 1 >= document.body.scrollHeight) { //如果滚动条的位置加上窗口的高度大于可见的窗口可见的高度，那么也就是滚动条到低了
+        if (top + document.body.clientHeight + this.totalOffset + 1 >= document.body.scrollHeight) { //如果滚动条的位置加上窗口的高度大于等于滚动内容的高度，那么也就是滚动条到低了
           this.$emit('update') 
         }
       },

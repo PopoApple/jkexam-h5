@@ -21,7 +21,7 @@ export default {
   components: { Tab, Tabs, RakeBack, InvitationUser },
   data() {
     return {
-      active: 1,
+      active: 0,
     };
   },
   // mounted() {

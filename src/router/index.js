@@ -6,7 +6,7 @@ Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/activity',
+    path: '/',
     name: 'activity',
     component: () => import(/* webpackChunkName: "activity" */ '../views/Activity')
   },
@@ -19,7 +19,7 @@ const routes = [
     component: () => import(/* webpackChunkName: "register" */ '../views/Register')
   },
   {
-    path: '/',
+    path: '/statistics',
     name: 'Statistics',
     component: () => import(/* webpackChunkName: "statistics" */ '../views/Statistics')
   },

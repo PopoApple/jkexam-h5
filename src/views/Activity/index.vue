@@ -25,6 +25,7 @@ const clientType = getClientType()
 
 export default {
   mounted() {
+    gdt('track', 'VIEW_CONTENT')  //上报行为数据，浏览活动页面
     console.log('isAPP:', clientType.isAPP)
     console.log('isWeixin:', clientType.isWeixin)
     console.log('isAndroid:', clientType.isAndroid)

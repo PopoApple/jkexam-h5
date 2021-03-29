@@ -25,6 +25,7 @@ const clientType = getClientType()
 
 export default {
   mounted() {
+    console.log('isAPP:', clientType.isAPP)
     console.log('isWeixin:', clientType.isWeixin)
     console.log('isAndroid:', clientType.isAndroid)
     console.log('isIOS:', clientType.isIOS)

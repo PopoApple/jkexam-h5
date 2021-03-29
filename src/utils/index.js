@@ -11,12 +11,15 @@ export const getQueryVariable = (variable) => {
 }
 
 export const getClientType = () => {
-  let u = navigator.userAgent; //判断浏览器型号
+  let u = navigator.userAgent //判断浏览器型号
+  console.log('ua:', u)
   let ua = window.navigator.userAgent.toLowerCase()
+  let isAPP = ua === 'jkexam-app'
   let isWeixin = ua.match(/MicroMessenger/i) == 'micromessenger'
-  let isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
-  let isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端   
+  let isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1 //android终端
+  let isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/) //ios终端   
   return {
+    isAPP,
     isWeixin,
     isAndroid,
     isIOS,

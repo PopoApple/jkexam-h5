@@ -32,9 +32,9 @@
 </template>
 
 <script>
-import iconStep1 from '../../assets/images/icon-step1.png'
-import iconStep2 from '../../assets/images/icon-step2.png'
-import iconStep3 from '../../assets/images/icon-step3.png'
+import iconStep1 from './images/icon-step1.png'
+import iconStep2 from './images/icon-step2.png'
+import iconStep3 from './images/icon-step3.png'
 
 export default {
   data() {
@@ -60,9 +60,9 @@ export default {
   }
   .wrap {
     width: 100vw;
-    // height: 206.375vw;
-    background-image: url(../../assets/images/bg.png);
+    background-image: url(./images/bg.png);
     padding-bottom: 30px;
+    position: relative;
   }
   .title {
     margin: 0;
@@ -73,12 +73,12 @@ export default {
     text-shadow: 3px 4px 2px rgba(0,0,0,.2);
     font-weight: bold;
     font-style: italic;
-    font-family: '微软雅黑';
+    letter-spacing: -3px;
   }
   .pic {
     width: 92.5vw;
     height: 60vw;
-    background-image: url(../../assets/images/pic.png);
+    background-image: url(./images/pic.png);
     margin: 0 auto;
     position: relative;
     top: -4vw;
@@ -101,11 +101,10 @@ export default {
       width: 56.875vw;
       height: 10.625vw;
       line-height: 10.625vw;
-      cursor: pointer;
       top: -5.3125vw;
       left: 50%;
       margin-left: -28.4375vw;
-      background-image: url(../../assets/images/bg-title.png);
+      background-image: url(./images/bg-title.png);
       color: #fff;
       text-align: center;
       font-size: 20px;
@@ -121,7 +120,7 @@ export default {
       margin-top: 12px;
     }
     .item-no {
-      background-image: url(../../assets/images/bg-li.png);
+      background-image: url(./images/bg-li.png);
       text-align: center;
       color: #fff;
     }
@@ -143,7 +142,7 @@ export default {
       line-height: 11.25vw;
       color: #fff;
       text-align: center;
-      background-image: url(../../assets/images/bg-btn.png);
+      background-image: url(./images/bg-btn.png);
       margin: 16px auto 0;
       display: block;
       font-size: 20px;

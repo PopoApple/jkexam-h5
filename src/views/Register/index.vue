@@ -1,6 +1,6 @@
 <template>
   <div class="bg-img wrap">
-    <i class="bg-img icon-info" />
+    <i class="bg-img icon-info" @click="modalShow = true" />
     <!-- <img :src="img" /> -->
     <h1 class="title">轻松考试神器</h1>
     <div class="bg-img btn-register"></div>
@@ -27,13 +27,15 @@
       </div>
       <div class="bg-img card-bottom"></div>
     </div>
+    <ModalInfo :show="modalShow" @input="e => modalShow = e" />
   </div>
 </template>
 
 <script>
-// import img from './images/bg-card.png'
+import ModalInfo from './ModalInfo'
 
 export default {
+  components: { ModalInfo },
   data() {
     return {
       // img,
@@ -42,6 +44,7 @@ export default {
         '碎片练习，让您不错过学习的每一分钟',
         '能力检测，智能生成试卷，不断挑战自我',
       ],
+      modalShow: false,
     }
   },
   mounted() {
@@ -102,6 +105,8 @@ export default {
       background-image: url(./images/bg-card-top.png);
       width: 100%;
       height: 9.375vw;
+      position: relative;
+      top: 1px;
     }
     .card-content {
       background-position: 0 0;
@@ -126,7 +131,7 @@ export default {
       background: #5b7aec;
       color: #fff;
       text-align: center;
-      font-size: 22px;
+      font-size: 20px;
     }
     .info-item {
       color: #7aa6f9;
@@ -152,6 +157,8 @@ export default {
       background-image: url(./images/bg-card-bottom.png);
       width: 100%;
       height: 9.375vw;
+      position: relative;
+      top: -1px;
     }
     .btns{
       background-image: url(./images/btn.png);
@@ -161,13 +168,13 @@ export default {
       margin: 10px auto 0;
       display: flex;
       font-size: 18px;
-      padding-left: 8vw;
+      padding-left: 7vw;
       .btn-join {
         color: #5b7aec;
       }
       .btn-activity {
         color: #fff;
-        margin-left: 9.5vw;
+        margin-left: 7.5vw;
       }
     }
     .downloads {

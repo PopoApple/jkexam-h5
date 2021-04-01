@@ -21,6 +21,7 @@
 
 <script>
 import { getQueryVariable, getClientType } from '@/utils'
+import { DOWNLOAD_URL_ANDROID, DOWNLOAD_URL_IOS } from '@/config/constants'
 const clientType = getClientType()
 
 export default {
@@ -40,9 +41,9 @@ export default {
       console.log('wx-open-launch-app fail', e.detail)
       if (e.errMsg === 'launch:fail') {
         if (clientType.isAndroid) {
-          location.href = 'https://a.app.qq.com/o/simple.jsp?pkgname=com.jkexam'
+          location.href = DOWNLOAD_URL_ANDROID
         } else if (clientType.isIOS) {
-          location.href = 'https://apps.apple.com/cn/app/id1528288352'
+          location.href = DOWNLOAD_URL_IOS
         }
       }
     })

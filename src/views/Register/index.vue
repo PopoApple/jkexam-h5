@@ -21,8 +21,8 @@
           <button class="btn-activity">最新抽奖活动</button>
         </div>
         <div class="downloads">
-          <a href="#" class="bg-img btn-download btn-download-android"></a>
-          <a href="#" class="bg-img btn-download btn-download-ios"></a>
+          <a :href="DOWNLOAD_URL_ANDROID" class="bg-img btn-download btn-download-android"></a>
+          <a :href="DOWNLOAD_URL_IOS" class="bg-img btn-download btn-download-ios"></a>
         </div>
       </div>
       <div class="bg-img card-bottom"></div>
@@ -33,6 +33,7 @@
 
 <script>
 import ModalInfo from './ModalInfo'
+import { DOWNLOAD_URL_ANDROID, DOWNLOAD_URL_IOS } from '@/config/constants'
 
 export default {
   components: { ModalInfo },
@@ -45,6 +46,8 @@ export default {
         '能力检测，智能生成试卷，不断挑战自我',
       ],
       modalShow: false,
+      DOWNLOAD_URL_ANDROID,
+      DOWNLOAD_URL_IOS,
     }
   },
   mounted() {

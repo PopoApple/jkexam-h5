@@ -1,10 +1,9 @@
 <template>
   <div id="app">
-    <!-- <div id="nav">
-      <router-link to="/activity">activity</router-link> |
-      <router-link to="/register">register</router-link> |
-      <router-link to="/">statistics</router-link>
-    </div> -->
+    <div class="nav">
+      <router-link to="/rakeBack">加入返佣统计</router-link>
+      <router-link to="/invitationUser">邀请用户统计</router-link>
+    </div>
     <router-view/>
   </div>
 </template>
@@ -28,5 +27,24 @@ export default {
   -moz-osx-font-smoothing: grayscale; */
   color: @fontColor;
   font-size: @fontSize;
+  padding: 10px;
+  background: @bgColor;
+
+  .nav {
+    display: flex;
+    justify-content: space-around;
+    background: #fff;
+    padding: 4px 10px 0;
+    border-radius: @borderRadiusL;
+    a {
+      color: @fontColorLight;
+      padding: 10px 0;
+      &.router-link-active {
+        color: @fontColor;
+        font-weight: bold;
+        border-bottom: 3px solid @green;
+      }
+    }
+  }
 }
 </style>

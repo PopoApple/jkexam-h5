@@ -42,5 +42,26 @@ module.exports = {
       //   }
       // },
     }
+  },
+  pages: {
+    front: {
+      // 入口文件
+      entry: 'src/pages/front/main.js',
+      // 入口的html文件位置
+      template: 'public/front.html',
+      // 入口html文件在构建后的输出文件名
+      filename: 'front.html',
+      // 网页标题栏标题内容
+      title: '活动前台页面',
+      // 入口项目所需要的chunk(chunk-vendors：三方库，chunk-common：公共内容，alpha: 入口自己的chunk)
+      chunks: ['chunk-vendors', 'chunk-common', 'front']
+    },
+    back: {
+      entry: 'src/pages/back/main.js',
+      template: 'public/back.html',
+      filename: 'back.html',
+      title: '活动后台页面',
+      chunks: ['chunk-vendors', 'chunk-common', 'back']
+    }
   }
 }

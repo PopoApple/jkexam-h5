@@ -26,16 +26,11 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "register" */ '../views/Register')
   },
-  {
-    path: '/statistics',
-    name: 'Statistics',
-    component: () => import(/* webpackChunkName: "statistics" */ '../views/Statistics')
-  },
 ]
 
 const router = new VueRouter({
-  mode: 'history',
-  base: process.env.BASE_URL,
+  // mode: 'history',
+  // base: process.env.BASE_URL,
   routes
 })
 

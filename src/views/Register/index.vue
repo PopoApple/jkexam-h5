@@ -50,9 +50,9 @@ export default {
       DOWNLOAD_URL_IOS,
     }
   },
-  mounted() {
-    gdt('track', 'VIEW_CONTENT_REGISTER')  //上报行为数据，浏览注册页面
-  },
+  // mounted() {
+  //   gdt('track', 'VIEW_CONTENT_REGISTER')  //上报行为数据，浏览注册页面
+  // },
 }
 </script>
 

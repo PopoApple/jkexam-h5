@@ -26,7 +26,7 @@ const clientType = getClientType()
 
 export default {
   mounted() {
-    gdt('track', 'VIEW_CONTENT')  //上报行为数据，浏览活动页面
+    //gdt('track', 'VIEW_CONTENT')  //上报行为数据，浏览活动页面
     console.log('isAPP:', clientType.isAPP)
     console.log('isWeixin:', clientType.isWeixin)
     console.log('isAndroid:', clientType.isAndroid)
@@ -34,11 +34,15 @@ export default {
     const phone = getQueryVariable('phone')
     console.log('phone:', phone)
     var btn = document.getElementById('launch-btn')
+    btn.addEventListener('click', function (e) {
+      console.log('launch-btn click')
+    })
     btn.addEventListener('launch', function (e) {
       console.log('wx-open-launch-app success')
     })
     btn.addEventListener('error', function (e) {
       console.log('wx-open-launch-app fail', e.detail)
+      console.log('e.errMsg:', e.errMsg)
       if (e.errMsg === 'launch:fail') {
         if (clientType.isAndroid) {
           location.href = DOWNLOAD_URL_ANDROID
@@ -53,7 +57,7 @@ export default {
     handleGetWxUserInfo() {
       const appid = 'wxf0e81c3bee622d60'
       let redirect_uri = encodeURIComponent(`https://pk.xxx.cn/pk/wechat/getUserInfoCallback`)
-      const state = encodeURIComponent('/')
+      const state = encodeURIComponent('/front.html')
       let url = `https://open.weixin.qq.com/connect/oauth2/authorize?appid=${appid}&redirect_uri=${redirect_uri}&response_type=code&scope=snsapi_userinfo&state=${state}#wechat_redirect`
       location.href = url
     }

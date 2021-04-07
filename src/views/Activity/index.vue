@@ -1,6 +1,6 @@
 <template>
   <div class="Activity">
-    <!-- <div class="circle light-circle circle-bg-1"></div>
+    <div class="circle light-circle circle-bg-1"></div>
     <div class="circle light-circle circle-bg-2"></div>
     <div class="circle light-circle circle-bg-3"></div>
     <div class="circles">
@@ -63,6 +63,11 @@
       </template>
     </div>
 
+    <div class="app-btns">
+      <button class="bg-img app-btn app-info-btn"></button>
+      <button class="bg-img app-btn app-download-btn"></button>
+    </div>
+
     <div class="sec-title">奖券排行</div>
     <div class="card card-ranking">
       <div class="circle light-circle card-ranking-circle"></div>
@@ -83,9 +88,9 @@
       </div>
     </div> 
     <ModalInvaitationDetail :show="invaitationDetailModalShow" @input="e => invaitationDetailModalShow = e" />
-    <ModalRules :show="rulesModalShow" @input="e => rulesModalShow = e" /> -->
+    <ModalRules :show="rulesModalShow" @input="e => rulesModalShow = e" /> 
 
-    <button @click="handleGetWxUserInfo">获取用户微信信息</button>
+    <!-- <button @click="handleGetWxUserInfo">获取用户微信信息</button>
     <wx-open-launch-app
       id="launch-btn"
       appid="wx49f566959c3a7e7e"
@@ -95,7 +100,7 @@
         <style>.btn { padding: 12px }</style>
         <button class="btn">打开APP</button>
       </script>
-    </wx-open-launch-app>
+    </wx-open-launch-app> -->
 
   </div>
 </template>
@@ -189,6 +194,6 @@ export default {
 </script>
 
 <style lang="less">
-  // @import url(./styles/index.less);
+  @import url(./styles/index.less);
 </style>
 

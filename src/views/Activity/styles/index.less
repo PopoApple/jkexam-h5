@@ -111,14 +111,14 @@
   }
   .title-1 {
     font-size: 36px;
-    padding-top: 86px;
+    padding-top: 90px;
     font-weight: bold;
     margin-left: -32px;
   }
   .title-2 {
     font-size: 34px;
     font-weight: bold;
-    margin-top: 8px;
+    margin-top: 2px;
     margin-left: 46px;
   }
   .header-btns {
@@ -385,4 +385,22 @@
       }
     }
   }
+
+  .app-btns {
+    display: flex;
+    width: @cardWidth;
+    margin: 40px auto 30px;
+    justify-content: space-between;
+    .app-btn {
+      width: 48%;
+      height: 12vw;
+    }
+    .app-info-btn {
+      background-image: url(../images/btn-info.png);
+    }
+    .app-download-btn {
+      background-image: url(../images/btn-download.png);
+    }
+  }
+
 }

@@ -6,6 +6,17 @@ body {
   height: 100%;
 }
 
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  font-weight: normal;
+}
+em {
+  font-style: normal;
+}
+div {
+  box-sizing: border-box;
+}
+
 button {
   border: none;
   background-color: transparent;
@@ -15,6 +26,12 @@ button {
   background-position: 0 0;
   background-size: 100%;
   background-repeat: no-repeat;
+}
+
+.ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .van-dialog.common-dialog {

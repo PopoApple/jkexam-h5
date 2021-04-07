@@ -35,12 +35,12 @@ module.exports = {
       '/api/': {
         target: 'http://192.168.0.222:9180',
       },
-      // '/apiBid/': {
-      //   target: 'http://bid.conschina.com',
-      //   pathRewrite: {
-      //     '^/apiBid/': '/'
-      //   }
-      // },
+      '/apiBid/': {
+        target: 'http://bbs.jnpasture.com',
+        pathRewrite: {
+          '^/apiBid/': '/'
+        }
+      },
     }
   },
   pages: {

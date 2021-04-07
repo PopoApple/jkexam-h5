@@ -15,14 +15,14 @@ export default {
   mounted() {
     http({
       method: 'get',
-      url: '/获取签名接口',
+      url: 'http://bbs.jnpasture.com/wx/v1/web/getSignature?url=' + location.href,
     }).then(res => {
-      const { timestamp, nonceStr, signature } = res
+      const { timestamp, noncestr, signature } = res
       wx.config({
         debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印
-        appId: '', // 必填，公众号的唯一标识
+        appId: 'wx49f566959c3a7e7e', // 必填，公众号的唯一标识
         timestamp, // 必填，生成签名的时间戳
-        nonceStr, // 必填，生成签名的随机串
+        nonceStr: noncestr, // 必填，生成签名的随机串
         signature,// 必填，签名
         jsApiList: ['updateAppMessageShareData', 'updateTimelineShareData'], // 必填，需要使用的JS接口列表
         openTagList: ['wx-open-launch-app'] // 可选，需要使用的开放标签列表，例如['wx-open-launch-app']
@@ -33,7 +33,7 @@ export default {
       wx.updateAppMessageShareData({ 
         title: '分享标题', // 分享标题
         desc: '分享描述分享描述分享描述分享描述分享描述分享描述分享描述', // 分享描述
-        link: 'https://www.conschina.com/', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+        link: location.href, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
         imgUrl: 'https://www.conschina.com/_nuxt/img/logo.e516e94.png', // 分享图标
         success: function () {
           // 设置成功
@@ -42,7 +42,7 @@ export default {
       })
       wx.updateTimelineShareData({ 
         title: '分享标题', // 分享标题
-        link: 'https://www.conschina.com/', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+        link: location.href, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
         imgUrl: 'https://www.conschina.com/_nuxt/img/logo.e516e94.png', // 分享图标
         success: function () {
           // 设置成功
@@ -64,7 +64,7 @@ export default {
   /* font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; */
-  color: @fontColor;
-  font-size: @fontSize;
+  // color: @fontColor;
+  // font-size: @fontSize;
 }
 </style>

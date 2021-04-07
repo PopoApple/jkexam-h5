@@ -1,0 +1,372 @@
+
+@import url(./common.less);
+.Activity {
+  background-color: @bgColor;
+  overflow: hidden;
+  position: relative;
+  padding-bottom: 30px;
+  color: #333;
+  font-size: 12px;
+  position: relative;
+  font-family: 'Hiragino Sans GB', 'Microsoft Yahei', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Segoe UI, Arial, Roboto, 'PingFang SC', 'miui', sans-serif;
+  .circle-bg-1 {
+    width: 80vw;
+    height: 80vw;
+    position: absolute;
+    bottom: -28vw;
+    left: -28vw;
+  }
+  .circle-bg-2 {
+    width: 28vw;
+    height: 28vw;
+    position: absolute;
+    bottom: -12vw;
+    right: -12vw;
+    opacity: .7;
+  }
+  .circle-bg-3 {
+    width: 44vw;
+    height: 44vw;
+    position: absolute;
+    bottom: 50vw;
+    right: -22vw;
+    opacity: .5;
+  }
+
+  .light-circle {
+    background-image: radial-gradient(#ffc600 0%, rgba(255,198,0, 0.86) 30%, rgba(255,198,0,0) 70%);
+  }
+  .circle {
+    border-radius: 100%;
+  }
+  .circles {
+    .circle-1 {
+      background-color: #f56815;
+      width: 89vw;
+      height: 89vw;
+      position: absolute;
+      top: 0;
+      left: 4vw;
+    }
+    .circle-2 {
+      background-color: #e85a15;
+      width: 69vw;
+      height: 69vw;
+      position: absolute;
+      top: 10vw;
+      left: 14vw;
+    }
+    .circle-3 {
+      background-color: #d84a0b;
+      width: 53vw;
+      height: 53vw;
+      position: absolute;
+      top: 19vw;
+      left: 22vw;
+    }
+    .circle-4 {
+      background-color: #ffaf28;
+      width: 14vw;
+      height: 14vw;
+      position: absolute;
+      top: 50vw;
+      left: 8vw;
+      opacity: 0.75;
+    }
+    .circle-5 {
+      width: 28vw;
+      height: 28vw;
+      position: absolute;
+      top: 57vw;
+      left: -11vw;
+      opacity: 0.9;
+    }
+    .circle-6 {
+      width: 65vw;
+      height: 65vw;
+      position: absolute;
+      top: 50vw;
+      right: -40vw;
+      opacity: 0.7;
+    }
+  }
+  .btn-rules {
+    position: absolute;
+    z-index: 1;
+    right: 0;
+    top: 34px;
+    height: 30px;
+    width: 96px;
+    text-align: center;
+    line-height: 29px;
+    color: #a55502;
+    background-color: #f9e0c5;
+    border-top-left-radius: 18px;
+    border-bottom-left-radius: 18px;
+  }
+  .title {
+    color: #ffeeb1;
+    text-align: center;
+    position: relative;
+  }
+  .title-1 {
+    font-size: 52px;
+    padding-top: 18vw;
+    padding-left: 9vw;
+  }
+  .title-2 {
+    font-size: 24px;
+    padding-left: 2vw;
+  }
+  .header-btns {
+    position: relative;
+    display: flex;
+    width: 85vw;
+    margin: 12vw auto;
+    .btn-login {
+      background-image: url(../images/btn-login.png);
+      width: 50%;
+      height: 13vw;
+    }
+    .btn-register {
+      background-image: url(../images/btn-register.png);
+      width: 50%;
+      height: 13vw;
+    }
+  }
+  .sec-title {
+    color: #fff;
+    text-align: center;
+    margin: 15px auto;
+    font-size: 18px;
+    position: relative;
+    &::before {
+      display: inline-block;
+      content: '';
+      width: 4px;
+      height: 15px;
+      border-left: 4px solid #fff;
+      border-right: 4px solid #fff;
+      margin-right: 8px;
+    }
+    &::after {
+      display: inline-block;
+      content: '';
+      width: 4px;
+      height: 15px;
+      border-left: 4px solid #fff;
+      border-right: 4px solid #fff;
+      margin-left: 8px;
+    }
+  }
+  
+  .card {
+    position: relative;
+    width: 90vw;
+    margin: 10px auto -14px;
+    .card-help-tape {
+      position: absolute;
+      background-image: url(../images/tape.png);
+      top: -4.7vw;
+      left: -1.7vw;
+      width: 20vw;
+      height: 20vw;
+    }
+    .card-header {
+      background-color: #8e330b;
+      height: 6.6vw;
+      border-radius: 3.3vw;
+      border: 2vw solid #ec580c;
+    }
+    .card-body {
+      position: relative;
+      top: -3.8vw;
+      left: 3vw;
+      border-radius: 6px;
+      background-color: @bgLight;
+      padding: 10px;
+      width: @cardWidth;
+    }
+    .card-content-help {
+      border: 1px solid #f9d9b3;
+      border-radius: 6px;
+      padding: 16px 10px 6px;
+    }
+    .info {
+      text-align: center;
+      em {
+        color: #ec580c;
+      }
+    }
+    .help-btns {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 10px;
+      .help-btn {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 20%;
+        .help-btn-circle {
+          width: 30px;
+          height: 30px;
+          background-color: @orange;
+          border-radius: 50%;
+          background-position: center;
+        }
+        .help-btn-icon {
+          position: relative;
+          &::before {
+            content: '';
+            height: 17px;
+            width: 3px;
+            background-color: #fff;
+            border-radius: 3px;
+            position: absolute;
+            top: 6px;
+            left: -1px;
+          }
+          &::after {
+            content: '';
+            width: 17px;
+            height: 3px;
+            background-color: #fff;
+            border-radius: 3px;
+            position: absolute;
+            top: 13px;
+            left: -8px;
+          }
+        }
+        .help-btn-text {
+          margin-top: 5px;
+          width: 100%;
+        }
+      }
+    }
+    .btn-invitation-help {
+      height: 34px;
+      line-height: 34px;
+      background-color: @orange;
+      border-radius: 17px;
+      text-align: center;
+      color: #fff;
+      width: 65vw;
+      margin: 10px auto 0;
+      display: block;
+      font-size: 14px;
+    }
+    .btn-invitation-detail {
+      height: 34px;
+      line-height: 34px;
+      text-align: center;
+      color: @orange;
+      width: 65vw;
+      margin: 0 auto;
+      display: block;
+    }
+  }
+  
+  .card-help {
+    position: relative;
+    .card-help-circle {
+      width: 40vw;
+      height: 40vw;
+      position: absolute;
+      bottom: -15vw;
+      left: -27vw;
+      opacity: .7;
+    }
+  }
+  
+  .sec-prize {
+    position: relative;
+    display: flex;
+    border-radius: 6px;
+    background: @bgLight;
+    width: 84vw;
+    margin: 0 auto;
+    align-items: stretch;
+    .sec-prize-item {
+      position: relative;
+      text-align: center;
+      flex: 1;
+      padding: 10px;
+    }
+    .sec-prize-split {
+      width: 6px;
+      border-left: 1px dashed @orange;
+      position: relative;
+      &::before {
+        content: '';
+        width: 10px;
+        height: 10px;
+        background-color: @bgColor;
+        top: -5px;
+        left: -5px;
+        position: absolute;
+        border-radius: 50%;
+      }
+      &::after {
+        content: '';
+        width: 10px;
+        height: 10px;
+        background-color: @bgColor;
+        bottom: -5px;
+        left: -5px;
+        position: absolute;
+        border-radius: 50%;
+      }
+    }
+    .sec-prize-name {
+      color: @orange;
+      font-size: 22px;
+    }
+    .sec-prize-desc {
+      margin-top: 6px;
+    }
+    .sec-prize-count {
+      color: @orange;
+      font-size: 16px;
+      margin-top: 8px;
+    }
+  }
+  
+  .card-ranking {
+    position: relative;
+    .card-ranking-circle {
+      width: 23vw;
+      height: 23vw;
+      position: absolute;
+      top: -10vw;
+      left: -17vw;
+    }
+  }
+  
+  .card-content-ranking {
+    padding: 0 10px;
+    .ranking-row {
+      display: flex;
+      color: #666;
+      padding: 16px 0;
+      &.ranking-header {
+        color: #333;
+      }
+    }
+    .ranking-row + .ranking-row {
+      border-top: 1px solid #999;
+    }
+    .ranking-col-rank {
+      width: 30px;
+    }
+    .ranking-col-name {
+      flex: 1;
+    }
+    .ranking-col-count {
+      flex: 1;
+      text-align: right;
+    }
+  }
+}

@@ -12,8 +12,8 @@
       <div class="circle light-circle circle-6"></div>
     </div>
     <button class="btn-rules" @click="rulesModalShow=true">活动详细规则</button>
-    <h1 class="title title-1">福利来了！</h1>
-    <h2 class="title title-2">参与抽奖，送旅游大奖！</h2>
+    <h1 class="title title-1">买建考学习送大礼</h1>
+    <h2 class="title title-2">双人游惊喜大派送</h2>
     <div class="header-btns">
       <button class="bg-img btn-login"></button>
       <button class="bg-img btn-register"></button>

@@ -1,6 +1,6 @@
 <template>
   <div class="Activity">
-    <div class="circle light-circle circle-bg-1"></div>
+    <!-- <div class="circle light-circle circle-bg-1"></div>
     <div class="circle light-circle circle-bg-2"></div>
     <div class="circle light-circle circle-bg-3"></div>
     <div class="circles">
@@ -83,15 +83,15 @@
       </div>
     </div> 
     <ModalInvaitationDetail :show="invaitationDetailModalShow" @input="e => invaitationDetailModalShow = e" />
-    <ModalRules :show="rulesModalShow" @input="e => rulesModalShow = e" />
+    <ModalRules :show="rulesModalShow" @input="e => rulesModalShow = e" /> -->
 
     <button @click="handleGetWxUserInfo">获取用户微信信息</button>
     <wx-open-launch-app
       id="launch-btn"
-      appid="your-appid"
+      appid="wx49f566959c3a7e7e"
       extinfo="your-extinfo"
     >
-      <script type="text/wxtags-template">
+      <script type="text/wxtag-template">
         <style>.btn { padding: 12px }</style>
         <button class="btn">打开APP</button>
       </script>
@@ -154,13 +154,17 @@ export default {
     var btn = document.getElementById('launch-btn')
     if (btn) {
       btn.addEventListener('click', function (e) {
-        console.log('launch-btn click')
+        console.log('-------------launch-btn click')
+      })
+      btn.addEventListener('ready', function (e) {
+        console.log('-------------wx-open-launch-app ready')
       })
       btn.addEventListener('launch', function (e) {
-        console.log('wx-open-launch-app success')
+        console.log('-------------wx-open-launch-app launch')
       })
       btn.addEventListener('error', function (e) {
-        console.log('wx-open-launch-app fail', e.detail)
+        console.log('-------------wx-open-launch-app error', e)
+        console.log('e.detail:', e.detail)
         console.log('e.errMsg:', e.errMsg)
         if (e.errMsg === 'launch:fail') {
           if (clientType.isAndroid) {
@@ -185,6 +189,6 @@ export default {
 </script>
 
 <style lang="less">
-  @import url(./styles/index.less);
+  // @import url(./styles/index.less);
 </style>
 

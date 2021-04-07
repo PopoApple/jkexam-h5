@@ -15,7 +15,7 @@ export default {
   mounted() {
     http({
       method: 'get',
-      url: 'http://bbs.jnpasture.com/wx/v1/web/getSignature?url=' + location.href,
+      url: 'http://bbs.jnpasture.com/wx/v1/web/getSignature?url=' + encodeURIComponent(location.href),
     }).then(res => {
       const { timestamp, noncestr, signature } = res
       wx.config({

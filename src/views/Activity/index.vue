@@ -14,9 +14,17 @@
     <button class="btn-rules" @click="rulesModalShow=true">活动详细规则</button>
     <h1 class="title title-1">买建考学习送大礼</h1>
     <h2 class="title title-2">双人游惊喜大派送</h2>
-    <div class="header-btns">
+    <!-- <div class="header-btns">
       <button class="bg-img btn-login"></button>
-      <button class="bg-img btn-register"></button>
+      <button class="bg-img btn-register" @click="registerModalShow=true"></button>
+    </div> -->
+    <div class="user-info" v-if="userInfo">
+      <div class="bg-img avator" :style="{ backgroundImage: `url(${userInfo.avator})` }"></div>
+      <div class="name">{{ userInfo.name }}</div>
+    </div>
+    <div class="header-logined-btns">
+      <button class="btn btn-yellow header-logined-btn btn-qualification">查看资格</button>
+      <button class="btn btn-orange header-logined-btn btn-invitation-detail" @click="invaitationDetailModalShow=true">邀请详情</button>
     </div>
 
     <div class="sec-title">邀请好友助力可获得额外抽奖券</div>
@@ -43,7 +51,6 @@
             </div>
           </div>
           <button class="btn-invitation-help">邀请好友助力</button>
-          <button class="btn-invitation-detail" @click="invaitationDetailModalShow=true">邀请详情</button>
         </div>
         <div class="card-hole card-hole-help-1"></div>
         <div class="card-hole card-hole-help-2"></div>
@@ -64,8 +71,8 @@
     </div>
 
     <div class="app-btns">
-      <button class="bg-img app-btn app-info-btn"></button>
-      <button class="bg-img app-btn app-download-btn"></button>
+      <button class="btn app-btn btn-yellow">了解详情</button>
+      <button class="btn app-btn btn-orange">APP下载</button>
     </div>
 
     <div class="sec-title">奖券排行</div>
@@ -87,20 +94,25 @@
         </div>
       </div>
     </div> 
+
+    <div class="end-info">活动到期信息</div>
+    <div class="winning-result ">中奖结果</div>
+    
     <ModalInvaitationDetail :show="invaitationDetailModalShow" @input="e => invaitationDetailModalShow = e" />
     <ModalRules :show="rulesModalShow" @input="e => rulesModalShow = e" /> 
+    <ModalRegister :show="registerModalShow" @input="e => registerModalShow = e" /> 
 
-    <!-- <button @click="handleGetWxUserInfo">获取用户微信信息</button>
+    <button @click="handleGetWxUserInfo">获取用户微信信息</button>
     <wx-open-launch-app
       id="launch-btn"
-      appid="wx49f566959c3a7e7e"
+      appid="wx66242255dca98718"
       extinfo="your-extinfo"
     >
       <script type="text/wxtag-template">
         <style>.btn { padding: 12px }</style>
         <button class="btn">打开APP</button>
       </script>
-    </wx-open-launch-app> -->
+    </wx-open-launch-app>
 
   </div>
 </template>
@@ -110,16 +122,24 @@ import { getQueryVariable, getClientType } from '@/utils'
 import { DOWNLOAD_URL_ANDROID, DOWNLOAD_URL_IOS } from '@/config/constants'
 import ModalInvaitationDetail from './ModalInvaitationDetail'
 import ModalRules from './ModalRules'
+import ModalRegister from './ModalRegister'
 const clientType = getClientType()
 
 export default {
-  components: { ModalInvaitationDetail, ModalRules },
+  components: { ModalInvaitationDetail, ModalRules, ModalRegister },
   data() {
     return {
+      userInfo: {
+        name: '晓玲',
+        avator: './avator.jpg',
+      },
       helpers: [
         { id: '1', name: '曹小伟', avator: 'https://www.conschina.com/_nuxt/img/logo.e516e94.png' },
         { id: '2', name: '大张伟', avator: 'https://www.conschina.com/_nuxt/img/logo.e516e94.png' },
         { id: '3', name: '刘奕博可就是觉得卡拉斯科了', avator: 'https://www.conschina.com/_nuxt/img/logo.e516e94.png' },
+        { id: '4', name: '张三三', avator: 'https://www.conschina.com/_nuxt/img/logo.e516e94.png' },
+        { id: '5', name: '张三三', avator: 'https://www.conschina.com/_nuxt/img/logo.e516e94.png' },
+        { id: '6', name: '张三三', avator: 'https://www.conschina.com/_nuxt/img/logo.e516e94.png' },
       ],
       prizes: [
         { id: '1', name: '一等奖', desc: '旅游年卡', count: '限量3个' },
@@ -138,6 +158,7 @@ export default {
       ],
       invaitationDetailModalShow: false,
       rulesModalShow: false,
+      registerModalShow: false,
     }
   },
   computed: {
@@ -170,8 +191,8 @@ export default {
       btn.addEventListener('error', function (e) {
         console.log('-------------wx-open-launch-app error', e)
         console.log('e.detail:', e.detail)
-        console.log('e.errMsg:', e.errMsg)
-        if (e.errMsg === 'launch:fail') {
+        console.log('e.detail.errMsg:', e.detail.errMsg)
+        if (e.detail.errMsg === 'launch:fail') {
           if (clientType.isAndroid) {
             location.href = DOWNLOAD_URL_ANDROID
           } else if (clientType.isIOS) {

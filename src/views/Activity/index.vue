@@ -74,10 +74,10 @@
             <div class="ranking-col-name">姓名</div>
             <div class="ranking-col-count">抽奖券累计数</div>
           </div>
-          <div class="ranking-row" v-for="(item, i) in rankings" :key="item.id">
+          <div class="ranking-row ranking-body" v-for="(item, i) in rankings" :key="item.id">
             <div class="ranking-col-rank">{{ i + 1 }}</div>
             <div class="ranking-col-name ellipsis">{{ item.name }}</div>
-            <div class="ranking-col-count">{{ item.count }}次</div>
+            <div class="ranking-col-count"><span class="ranking-count">{{ item.count }}</span>次</div>
           </div>
         </div>
       </div>

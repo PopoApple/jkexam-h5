@@ -5,7 +5,7 @@
   overflow: hidden;
   position: relative;
   padding-bottom: 30px;
-  color: #333;
+  color: #555;
   font-size: 12px;
   position: relative;
   font-family: 'Hiragino Sans GB', 'Microsoft Yahei', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Segoe UI, Arial, Roboto, 'PingFang SC', 'miui', sans-serif;
@@ -99,8 +99,8 @@
     width: 96px;
     text-align: center;
     line-height: 29px;
-    color: #a55502;
-    background-color: #f9e0c5;
+    color: @brown;
+    background-color: rgba(255, 244, 231, .85);
     border-top-left-radius: 18px;
     border-bottom-left-radius: 18px;
   }
@@ -188,7 +188,7 @@
       width: @cardWidth;
     }
     .card-content-help {
-      border: 1px solid #f9d9b3;
+      border: 1px solid @orange;
       border-radius: 6px;
       padding: 16px 10px 6px;
     }
@@ -243,6 +243,7 @@
         .help-btn-text {
           margin-top: 5px;
           width: 100%;
+          color:@brown;
         }
       }
     }
@@ -293,7 +294,7 @@
       position: relative;
       text-align: center;
       flex: 1;
-      padding: 10px;
+      padding: 15px 10px 10px;
     }
     .sec-prize-split {
       width: 6px;
@@ -321,14 +322,15 @@
       }
     }
     .sec-prize-name {
-      color: @orange;
+      color: #ff9a00;
       font-size: 22px;
+      font-weight: bold;
     }
     .sec-prize-desc {
-      margin-top: 6px;
+      margin-top: 4px;
     }
     .sec-prize-count {
-      color: @orange;
+      color: #e46100;
       font-size: 16px;
       margin-top: 8px;
     }
@@ -349,17 +351,17 @@
     padding: 0 10px;
     .ranking-row {
       display: flex;
-      color: #666;
+      color: @brown;
       padding: 16px 0;
       &.ranking-header {
-        color: #333;
+        color:@brown;
       }
     }
     .ranking-row + .ranking-row {
-      border-top: 1px solid #999;
+      border-top: 1px solid#ffe1bc;
     }
     .ranking-col-rank {
-      width: 30px;
+      width: 40px;
     }
     .ranking-col-name {
       flex: 1;
@@ -367,6 +369,17 @@
     .ranking-col-count {
       flex: 1;
       text-align: right;
+      .ranking-count {
+        font-size: 14px;
+        font-weight: bold;
+      }
+    }
+    .ranking-body {
+      .ranking-col-rank, .ranking-col-name {
+        width: 40px;
+        font-size: 14px;
+        font-weight: bold;
+      }
     }
   }
 }
